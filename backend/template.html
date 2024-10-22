@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Receipt</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: "SF Pro Text", Arial, sans-serif;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            font-family: "SF Pro Text", Arial, sans-serif;
+        }
+        .container {
+            /* width: 80%; */
+            /* margin: 20px auto; */
+            min-height: calc(100vh - 40px);
+            background-color: #fff;
+            padding: 20px;
+        }
+        /* .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        } */
+        /* .header .left-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        } */
+        /* .header .left-header h2 {
+            color: rgba(0, 0, 0, 0.88);
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 28px;
+        }
+        .header .left-header p {
+            color: rgba(0, 0, 0, 0.65);
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 20px;
+        }
+        .header img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        .header .company-info {
+            text-align: right;
+        }
+        .header .company-info h2 {
+            color: #B2B7C2;
+            font-size: 31px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 38px;
+        }
+        .header .company-info p {
+            color: rgba(0, 0, 0, 0.65);
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 20px; 
+        } */
+        .order-details {
+            /* margin-top: 20px; */
+            display: flex;
+            justify-content: space-between;
+        }
+        .order-details .customer-details {
+            max-width: 145px;
+        }
+        .order-details .customer-details span{
+            color: rgba(0, 0, 0, 0.65);
+            font-size: 8px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 10px; 
+        }
+        .order-details .customer-details h4{
+            color: #000;
+            font-size: 10px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 20px;
+        }
+        .order-details .customer-details p{
+            color: rgba(0, 0, 0, 0.65);
+            font-size: 10px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 12px;
+        }
+        .order-details .order-date{
+            font-size: 10px;
+            font-style: normal;
+            font-weight: 600;
+            gap: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .order-details .order-date p{
+           display: flex;
+           flex-direction: column;
+           color: rgba(0, 0, 0, 0.65);
+           font-size: 8px;
+           line-height: 10px;
+        }
+        .order-details .order-date p b{
+            color: #000;
+            font-size: 10px;
+            line-height: 20px;
+        }
+        .order-details .amount-section {
+            display: flex;
+            justify-content: end;
+            flex-direction: column;
+            align-items: end;
+        }
+        .order-details .amount-section span{
+            color: rgba(0, 0, 0, 0.65);
+            font-size: 8px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 10px;
+        }
+        .order-details .amount-section p{
+            color: #0169E6;
+            padding: 6px 0px;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 700;
+        }
+        .table-container {
+            margin-top: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #000;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table th, table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #000;
+        }
+        table th {
+            background-color: #fff;
+        }
+        table td {
+            font-size: 14px;
+            color: #333;
+        }
+        table .product-name {
+            display: flex;
+            align-items: center;
+            gap: 6.51px;
+        }
+        table td img{
+            width: 30px;
+            height: 30px;
+            border-radius: 3.165px;
+        }
+        .bill-details {
+            margin-left: auto;
+            border-radius: 8px;
+            border: 0.25px solid #000;
+            width: 208.183px;
+            padding: 4.238px;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        .bill-details h5 {
+            color: rgba(0, 0, 0, 0.88);
+            font-size: 8px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 12.713px;
+        }
+        .bill-details .calculation {
+            margin-top: 8.48px;
+        }
+        .bill-details .calculation p{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .bill-details .calculation span{
+            color: rgba(0, 0, 0, 0.88);
+            font-size: 8px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 11.654px;
+        }
+        .bill-details .total {
+            margin-top: 4.24px;
+        }
+        .bill-details .total p {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: rgba(0, 0, 0, 0.88);
+            font-size: 10px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 12.713px; 
+        }
+
+        /* .footer p {
+            color: #0169E6;
+            font-size: 10px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 20px;
+            padding-bottom: 14px;
+        }
+        .logo {
+            border-top: 1px solid #D7DAE0;
+            text-align: right;
+            padding-top: 20px;
+        }
+        .logo img {
+            width: 80px;
+        } */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- <div class="header" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <div class="left-header" style="display: flex; align-items: center; gap: 8px;">
+                <img style="width: 50px; height: 50px; border-radius: 50%;" src="https://bizline-staging-bucket.s3.ap-south-1.amazonaws.com/productImages/thumbnail/1723444231208-Screenshot 2024-08-12 115633.png" alt="Image" />
+                <div>
+                    <h2 style="color: rgba(0, 0, 0, 0.88); font-size: 18px; font-style: normal; font-weight: 700; line-height: 28px;">Suksaan Enterprise</h2>
+                    <p style="color: rgba(0, 0, 0, 0.65); font-size: 12px; font-style: normal; font-weight: 400; line-height: 20px;">{{customerName}}</p>
+                </div>
+            </div>
+            <div class="company-info" style="text-align: right;">
+                <h2 style="color: #B2B7C2; font-size: 31px; font-style: normal; font-weight: 600; line-height: 38px;">Order Receipt</h2>
+                <p style="color: rgba(0, 0, 0, 0.65); font-size: 12px; font-style: normal; font-weight: 600; line-height: 20px;">#AB2324-01</p>
+            </div>
+        </div> -->
+
+        <div class="order-details">
+            <div class="customer-details">
+                <span>Order From:</span> 
+                <h4>{{orderFrom}}</h4>
+                <p>{{address}}</p>
+            </div>
+            <div class="order-date">
+                <p>Order Date: <b>{{orderDate}}</b></p>
+                <p>Dispatch Date: <b>{{dispatchDate}}</b></p>
+            </div>
+            <div class="amount-section">
+                <span>TOTAL AMOUNT</span>
+                <p>₹{{totalAmount}}</p>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Size</th>
+                        <th>Qty</th>
+                        <th>Rate per unit</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{items}}
+                    <!-- <tr>
+                        <td>
+                            <div class="product-name">
+
+                                <img src="https://fastly.picsum.photos/id/903/200/300.jpg?hmac=bT2dTWTFYT3TyM7cBatAwmhTtJuzlHBXtqn_kH-z3lU" alt="Image" />  
+                                Godrej Cut Stainless Steel Hinge Steel Hinge
+                            </div>
+                        </td>
+                        <td>180 IN x 180 IN</td>
+                        <td>10 BOX (10,000 PCS)</td>
+                        <td>₹10 / pcs</td>
+                        <td>₹1000000</td>
+                    </tr>
+                     -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="bill-details">
+            <h5>Bill Details</h5>
+            <div class="calculation">
+                <p>
+                    <span>Subtotal</span>
+                    <span>₹76,010</span>
+                </p>
+                <p>
+                    <span>Total Discount</span>
+                    <span>₹130</span>
+                </p>
+            </div>
+            <hr />
+            <div class="total">
+                <p>
+                    <span>Grand Total</span>
+                    <span>₹1,03,373</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- <div class="footer" style="width: 100%; padding-bottom: 14px; text-align: start; margin-top: 40px;">
+            <p style="color: #0169E6; font-size: 10px; font-style: normal; font-weight: 600; line-height: 20px; padding-bottom: 14px;">Thank you for your business!</p>
+            <div class="logo" style="border-top: 1px solid #D7DAE0; text-align: right; padding-top: 20px;">
+                <img style="width: 80px;" src="data:image/png;base64,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" alt="Biizline Logo">
+            </div>
+        </div> -->
+
+    </div>
+</body>
+</html>
